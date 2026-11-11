@@ -2,7 +2,16 @@
 
 A proposed CLI for unit-test scaffolds and explicit mocks, designed by **AetherCode Labs**.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-475569.svg)](https://github.com/kongshanman/cli-testgen/blob/main/LICENSE)
+![Status: Design stage](https://img.shields.io/badge/Status-design_stage-9a3412.svg)
+
+[Studio website](https://kongshanman.github.io/portfolio/) · [Studio profile](https://github.com/kongshanman) · [Related project: ast-refactor-core](https://github.com/kongshanman/ast-refactor-core)
+
 > Design specification. No executable CLI or package release is available. These options describe a proposed interface.
+
+## Installation Status
+
+No installable package is available yet. On GitHub, select **Code** then **Download ZIP** to obtain the design materials. Runtime support and installation instructions will accompany an executable release.
 
 ## Features — Planned
 
@@ -42,13 +51,13 @@ Generated scaffolds require human review. Expected values must come from require
 
 1. Open an issue with the use case, minimal source example, and expected test structure.
 2. Check for existing proposals before adding an option.
-3. Fork the repository and keep each change focused.
+3. Select **Fork** on GitHub and create the fork in your account. Open the relevant file in your fork, select its pencil-shaped **Edit** button, make the change, and select **Commit changes**.
 4. Include input and expected-output fixtures with future generator changes.
 5. Include a file collision case for changes affecting writes.
-6. Open a pull request describing the change and checks actually performed.
+6. In your fork, select **Contribute**, then **Open pull request**. Confirm the base repository is `kongshanman/cli-testgen`, describe the change and checks actually performed, and select **Create pull request**.
 
 Documentation and design contributions are the current contribution path. Development commands will be added with the implementation.
 
 ## License
 
-MIT License. See [LICENSE](../LICENSE).
+MIT License. See [LICENSE](https://github.com/kongshanman/cli-testgen/blob/main/LICENSE).
