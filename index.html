@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="AetherCode Labs — an independent software studio focused on static analysis, automated test generation, and command-line developer tools.">
+  <meta name="theme-color" content="#f3f2ec">
+  <title>AetherCode Labs — Tools for working with code</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root{--paper:#f3f2ec;--ink:#202a25;--muted:#5e665f;--line:#cbd0c6;--accent:#a23c20;--white:#fffefa}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 "Helvetica Neue","Segoe UI",sans-serif}a{color:inherit;text-underline-offset:5px}a:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:6px}::selection{background:#ecc2ab}
+    .wrap{max-width:1160px;margin:auto;padding:0 32px}.mono,.eyebrow,code,pre{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace}.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}.muted{color:var(--muted)}.small{font-size:13px}.rule{border-top:1px solid var(--line)}
+    header{padding:26px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:24px}.brand{display:flex;align-items:center;gap:12px;font-weight:650;text-decoration:none;letter-spacing:-.025em}.mark{display:grid;place-items:center;width:38px;height:38px;background:var(--ink);color:var(--paper);font-size:12px}nav{display:flex;flex-wrap:wrap;gap:26px;font-size:13px}nav a{text-decoration:none}nav a:hover{text-decoration:underline}
+    .hero{padding:88px 0 70px;display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:center}h1{font:normal clamp(42px,5.8vw,70px)/1.04 Georgia,"Times New Roman",serif;letter-spacing:-.045em;margin:24px 0}h1 em{font-style:normal;color:var(--accent)}.intro{max-width:490px;font-size:18px;color:var(--muted)}.cta{display:inline-flex;gap:24px;margin-top:20px;padding:0 0 8px;border-bottom:1px solid var(--ink);font-size:14px;font-weight:600;text-decoration:none}.cta:hover{color:var(--accent);border-color:var(--accent)}
+    .diagram{margin:0;padding:26px;background:var(--white);border:1px solid var(--line);min-width:0}.diagram figcaption{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16px;font-size:10px;letter-spacing:.08em;color:var(--muted)}.diagram svg{display:block;width:100%;height:auto;margin:24px 0 14px}.diagram .footnote{border-left:2px solid var(--accent);padding-left:14px;font-size:12px;color:var(--muted)}
+    .strip{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding:20px 0;font-size:10px;letter-spacing:.09em;color:var(--muted);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}section.content{padding:52px 0}.section-top{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:26px}h2{font:normal 33px/1.2 Georgia,"Times New Roman",serif;letter-spacing:-.025em;margin:0}h3{font-size:23px;letter-spacing:-.04em;margin:25px 0 12px;overflow-wrap:anywhere}.cards{display:grid;grid-template-columns:1fr 1fr;gap:24px}.card{min-width:0;background:var(--white);border:1px solid var(--line);padding:30px;display:flex;flex-direction:column}.card-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.pill{font-size:10px;padding:3px 8px;border:1px solid #d7bea9;color:var(--accent);white-space:nowrap}.card p{color:var(--muted);margin-top:0}.tags{font-size:10px;color:var(--muted);margin:10px 0 6px}.card .cta{align-self:flex-start;margin-top:auto;padding-top:22px}.note{margin:18px 0 0;font-size:12px;color:var(--muted)}
+    .principles{display:grid;grid-template-columns:1fr 2fr;gap:50px}.principle-list{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.principle-list h3{font-size:14px;letter-spacing:0;margin:4px 0 12px}.principle-list p{font-size:13px;color:var(--muted);margin:0}.number{font-size:10px;color:var(--accent)}
+    details{border-top:1px solid var(--line)}details:last-child{border-bottom:1px solid var(--line)}summary{cursor:pointer;padding:22px 0;font-size:14px;font-weight:600}details[open] summary{color:var(--accent)}.spec{padding:0 0 28px;max-width:840px}.spec p,.spec li{font-size:14px;color:var(--muted)}pre{padding:20px;background:var(--ink);color:#e0e7de;font-size:12px;line-height:1.8;overflow:auto;border-radius:2px}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:12px}th,td{padding:12px;text-align:left;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:500}.downloads{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:24px;font-size:12px}footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:26px 0 34px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}footer p{margin:0}.skip{position:absolute;left:12px;top:-80px;background:white;padding:10px;z-index:10}.skip:focus{top:10px}
+    @media(max-width:800px){.hero{gap:35px;padding:52px 0;grid-template-columns:1fr}.diagram{max-width:520px}.principles{grid-template-columns:1fr;gap:26px}.wrap{padding:0 22px}.section-top{align-items:flex-start;flex-direction:column;gap:10px}.cards{gap:18px}.card{padding:23px}}
+    @media(max-width:560px){header{align-items:flex-start;flex-direction:column;gap:18px}nav{gap:23px}.cards,.principle-list{grid-template-columns:1fr}.principle-list{gap:24px}.card-top{align-items:flex-start}h1{font-size:48px}.strip{font-size:9px;justify-content:flex-start;gap:12px 22px}section.content{padding:38px 0}.intro{font-size:16px}.hero{padding-bottom:40px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="./" aria-label="AetherCode Labs home"><span class="mark mono" aria-hidden="true">A/C</span>AetherCode Labs</a>
+      <nav aria-label="Main navigation"><a href="#projects">Projects</a><a href="#approach">Approach</a><a href="#specifications">Specifications</a><a href="https://github.com/kongshanman">GitHub ↗</a></nav>
+    </header>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div><p class="eyebrow">Independent software studio / Developer tooling</p><h1 id="hero-title">Understand code.<br><em>Make changes<br>explicit.</em></h1><p class="intro">Small tools for inspecting source, drafting tests, and making everyday development more deliberate.</p><a class="cta" href="#projects">Explore our project designs <span aria-hidden="true">↓</span></a></div>
+        <figure class="diagram">
+          <figcaption class="mono"><span>THE ANALYSIS PATH</span><span>CONCEPT / 001</span></figcaption>
+          <svg viewBox="0 0 370 290" role="img" aria-labelledby="diagram-title diagram-desc">
+            <title id="diagram-title">From source code to a structured diagnostic</title><desc id="diagram-desc">Source text is parsed into a syntax tree, traversed by rules, and converted into a diagnostic with a rule identifier and source location.</desc>
+            <g fill="none" stroke="#abb5aa" stroke-width="1.2"><path d="M185 45V80M185 100V135M185 135H83V170M185 135H287V170M185 135V170M83 190V220H185M287 190V220H185M185 190V246"/></g>
+            <rect x="110" y="8" width="150" height="37" fill="#f3f2ec" stroke="#cbd0c6"/><text x="185" y="31" text-anchor="middle" fill="#202a25" font-family="monospace" font-size="12">source.ts</text>
+            <circle cx="185" cy="92" r="17" fill="#202a25"/><text x="185" y="96" text-anchor="middle" fill="#fffefa" font-family="monospace" font-size="9">AST</text>
+            <g fill="#fffefa" stroke="#a23c20" stroke-width="1.4"><circle cx="83" cy="180" r="12"/><circle cx="185" cy="180" r="12"/><circle cx="287" cy="180" r="12"/></g>
+            <g fill="#5e665f" font-family="monospace" font-size="9"><text x="210" y="94">parse</text><text x="15" y="157">Function</text><text x="160" y="157">Block</text><text x="265" y="157">Return</text><text x="201" y="235">apply rules</text></g>
+            <rect x="92" y="246" width="186" height="35" fill="#f3f2ec" stroke="#cbd0c6"/><text x="185" y="268" text-anchor="middle" fill="#a23c20" font-family="monospace" font-size="11">diagnostics.json</text>
+          </svg>
+          <p class="footnote">Source locations. Explicit rules. Reviewable output.<br>Illustrative architecture; implementation pending.</p>
+        </figure>
+      </section>
+      <div class="strip mono" aria-label="Technical focus"><span>ABSTRACT SYNTAX TREES</span><span>TEST GENERATION</span><span>COMMAND-LINE INTERFACES</span><span>TYPESCRIPT · NODE.JS · PYTHON</span></div>
+      <section id="projects" class="content" aria-labelledby="projects-title">
+        <div class="section-top"><h2 id="projects-title">Project notebooks</h2><span class="eyebrow">01 — Scope before scale</span></div>
+        <div class="cards">
+          <article class="card"><div class="card-top"><span class="eyebrow">01 / Static analysis</span><span class="pill mono">Design stage</span></div><h3 class="mono">ast-refactor-core</h3><p>A lightweight AST parsing and code smell detection toolkit for JavaScript and TypeScript. Designed to turn structural patterns into clear, traceable diagnostics.</p><div class="tags mono">AST traversal · Configurable rules · JSON output</div><a class="cta" href="#ast-spec">Explore the specification <span aria-hidden="true">↗</span></a></article>
+          <article class="card"><div class="card-top"><span class="eyebrow">02 / Test tooling</span><span class="pill mono">Design stage</span></div><h3 class="mono">cli-testgen</h3><p>A CLI design for generating unit-test scaffolds and explicit mock stubs. Intended to keep missing expectations and dependency assumptions visible to reviewers.</p><div class="tags mono">Test templates · Mock stubs · Dry-run previews</div><a class="cta" href="#testgen-spec">Explore the specification <span aria-hidden="true">↗</span></a></article>
+        </div>
+        <p class="note">These projects are at the specification stage. Executable releases, runtime compatibility results, and automated test results are not yet available.</p>
+      </section>
+      <section id="approach" class="content rule principles" aria-labelledby="approach-title">
+        <div><p class="eyebrow">02 — How we think</p><h2 id="approach-title">Engineering with<br>visible assumptions.</h2></div>
+        <div class="principle-list"><div><span class="number mono">/ 01</span><h3>Inspectable</h3><p>Connect each finding to a rule, a source location, and an explanation a developer can examine.</p></div><div><span class="number mono">/ 02</span><h3>Reproducible</h3><p>Use explicit inputs and fixtures. Publish compatibility and performance claims alongside evidence.</p></div><div><span class="number mono">/ 03</span><h3>Bounded</h3><p>Document what a tool cannot infer. Keep generated changes and test expectations under human review.</p></div></div>
+      </section>
+      <section id="specifications" class="content rule" aria-labelledby="specifications-title">
+        <div class="section-top"><h2 id="specifications-title">Inside the specifications</h2><span class="eyebrow">03 — Interfaces, not promises</span></div>
+        <details id="ast-spec" open><summary><span class="mono">ast-refactor-core</span> — proposed analysis flow</summary><div class="spec"><p>The initial scope is syntax-aware inspection, without automatic source rewriting or whole-program semantic analysis. The following is pseudocode, not an executable API.</p><pre><code>source = read_text("src/example.ts")
+tree = parse_source(source, language="typescript", locations=true)
+diagnostics = analyze(tree, rules={"max-nesting-depth": {"limit": 4}})
+
+for diagnostic in diagnostics:
+    print(diagnostic.rule, diagnostic.location, diagnostic.message)</code></pre><p>Initial rule proposals cover nesting depth and function length. A code smell is a review signal, not proof of a defect.</p><a class="small" href="materials/ast-refactor-core-README.md" download>Download the project README ↓</a></div></details>
+        <details id="testgen-spec" open><summary><span class="mono">cli-testgen</span> — proposed command interface</summary><div class="spec"><p>A proposed interface for local test scaffolding. No executable CLI or installable package is available yet.</p><pre><code>cli-testgen ./src/math.ts --framework vitest --out-dir ./tests --dry-run</code></pre><div class="table-wrap"><table><caption class="small muted" style="text-align:left;padding:8px 0">Proposed parameters</caption><thead><tr><th>Option</th><th>Default</th><th>Intended behavior</th></tr></thead><tbody><tr><td><code>--framework</code></td><td>vitest</td><td>Select the test template format.</td></tr><tr><td><code>--mock</code></td><td>none</td><td>Request explicit mock stubs for imports.</td></tr><tr><td><code>--dry-run</code></td><td>false</td><td>Preview planned files without writing.</td></tr><tr><td><code>--overwrite</code></td><td>false</td><td>Permit replacing generated target files.</td></tr></tbody></table></div><p>Generated scaffolds require review. Expected values must come from requirements or verified examples.</p><a class="small" href="materials/cli-testgen-README.md" download>Download the project README ↓</a></div></details>
+        <div class="downloads"><a href="materials/profile-README.md" download>Studio profile README ↓</a><a href="LICENSE">MIT License ↗</a><a href="https://github.com/kongshanman">GitHub profile ↗</a></div>
+      </section>
+    </main>
+    <footer><p>© 2026 AetherCode Labs</p><p>Independent developer tooling. Documented in the open.</p></footer>
+  </div>
+</body>
+</html>
